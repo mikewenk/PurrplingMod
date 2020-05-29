@@ -20,6 +20,7 @@ namespace NpcAdventure.Model
         public SButton RequestsShiftButton { get; set; } = SButton.LeftShift;
         public ExperimentalFeatures Experimental { get; set; } = new ExperimentalFeatures();
         public bool AllowGainFriendship { get; set; } = true;
+        public int Ask2FollowCursorTile { get; set; } = 131;
 
         public class ExperimentalFeatures
         {

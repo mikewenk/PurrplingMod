@@ -9,6 +9,7 @@ using NpcAdventure.Compatibility;
 using NpcAdventure.Story;
 using NpcAdventure.Story.Scenario;
 using NpcAdventure.Internal.Patching;
+using NpcAdventure.Internal.Assets;
 
 namespace NpcAdventure
 {
@@ -41,6 +42,7 @@ namespace NpcAdventure
                 this.Monitor.Log("Android support is an experimental feature, may cause some problems. Before you report a bug please content me on my discord https://discord.gg/wnEDqKF Thank you.", LogLevel.Alert);
             }
 
+            RegisterAssetEditors(helper);
             Commander.Register(this);
 
             this.ContentPackManager = new ContentPackManager(this.Monitor, this.Config.EnableDebug);
@@ -48,6 +50,14 @@ namespace NpcAdventure
             this.Patcher = new GamePatcher(this.ModManifest.UniqueID, this.Monitor, this.Config.EnableDebug);
             this.RegisterEvents(helper.Events);
             this.ContentPackManager.LoadContentPacks(helper.ContentPacks.GetOwned());
+        }
+
+        private static void RegisterAssetEditors(IModHelper helper)
+        {
+            if (Constants.TargetPlatform != GamePlatform.Android)
+            {
+                helper.Content.AssetEditors.Add(new AskToFollowCursor(helper.Content));
+            }
         }
 
         private void RegisterEvents(IModEvents events)

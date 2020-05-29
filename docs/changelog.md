@@ -2,6 +2,7 @@
 
 ## Upcoming version
 
+- Added new hint cursor (on NPC mouse hover) for ask to follow dialog (thx puffolotti)
 - Player can gain extra friendship points every whole hour while adventuring with companions (#109)
 - Mod's translation was moved to the separated folder `/locale/<localeCode>` and not requires the suffix ~~`.<localeCode>.json`~~
 - Introduced new simplified content pack definition format version *1.3*
